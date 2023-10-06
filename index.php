@@ -38,9 +38,7 @@ echo 'Hello, nous sommes le '.$dt ;
     </select> 
 <!-- 
     <button id="OK">OK</button> -->
-<!-- <div>
-    taux de conversion : 
-</div> -->
+<!--   -->
 <div id="toggle" class="hide">
 <p>1€ = <span id="rate"></span></p>
 
