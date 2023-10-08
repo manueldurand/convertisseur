@@ -6,7 +6,7 @@ include_once 'Model/TauxDeChange.php';
 $data = AccesDonnees::getDevises();
 $_SESSION['donneesPays'] =json_encode($data, JSON_UNESCAPED_UNICODE) ;
 $dt = date('d/m/Y');
-
+// var_dump($_SESSION['donneesPays']);
 
 ini_set("display_errors", 1);
 ini_set('log_errors', 1);

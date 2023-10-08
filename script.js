@@ -5,10 +5,12 @@ let formData = new FormData();
 
 var paysSelection = document.getElementById('paysSelection');
 const toggle = document.getElementById('toggle')
-//console.log(countries);
-let countriesList = JSON.parse(countries)
-console.log(countriesList);
+// console.log(countries);
+// let countriesList = JSON.parse(countries)
+let countriesList = listePays.json
 
+//console.log(countriesList);
+// console.log(listePays.json);
 countriesList.forEach(function(pays) {
     var nomPays = pays.nomPays;
     var option = document.createElement("option");
