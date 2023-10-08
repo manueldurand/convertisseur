@@ -4,10 +4,10 @@
  * 
  */
 class AccesDonnees {
-    private static $servername = "mysql:host=localhost"; // nom du serveur MySQL
+    private static $servername = "mysql:host=localhost"; // nom du serveur
     private static $dbname = "dbname=devises"; // nom de la base de données
     private static $username = "manuel"; // nom d'utilisateur
-    private static $pwd = "manuel2023"; // mot de passe MySQL
+    private static $pwd = "manuel2023"; // mot de passe
 /**
  * fonction statique, crée une instance de PDO
  * @return PDO
