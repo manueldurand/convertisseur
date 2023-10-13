@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#paysSelection.open {
+    height: 200px;
+    overflow-y:scroll;
+} 
+.hide {
+    display: none;
+}
+.titre {
+    text-align: center;
+}
+.cadre {
+    text-align: center;
+}
