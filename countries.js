@@ -534,7 +534,7 @@ const countriesList =
     },
     {
         "nomPays": "ISRAËL",
-        "nomDevise": "Nouveau Sheqel israélien",
+        "nomDevise": "Shekel",
         "codeDevise": "ILS"
     },
     {

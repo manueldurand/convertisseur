@@ -5,6 +5,7 @@ import { fetchCurrencyRate } from './tauxDeChange.js';
 
 var paysSelection = document.getElementById('paysSelection');
 const toggle = document.getElementById('toggle')
+const currencyToConvert = document.getElementById('currencyToConvert')
 
 var selectedCountry
 let formData = new FormData();
@@ -38,32 +39,45 @@ paysSelection.addEventListener("blur", function () {
 });
 
 
-paysSelection.addEventListener("change", e => findCountry(), true)
+paysSelection.addEventListener("change", e => findCountryAndConvert(), true)
 
-function findCountry() {
+function findCountryAndConvert() {
     let selectedCountry = document.getElementById('paysSelection').value;
     const selectedCountryInfo = countriesList.find(country => country.nomPays === selectedCountry)
     console.log(selectedCountry);
     console.log(selectedCountryInfo);
     const selectedCurrencyCode = selectedCountryInfo.codeDevise
     const selectedCurrencyName = selectedCountryInfo.nomDevise
-    console.log(selectedCurrencyCode);
+
+    let optionDevise = document.createElement('option')
+    optionDevise.value = selectedCurrencyName
+    optionDevise.textContent = selectedCurrencyName
+    currencyToConvert.appendChild(optionDevise)
     
+
     fetchCurrencyRate(selectedCurrencyCode)
     .then(response => {
         const currencyRate = response[selectedCurrencyCode];
 
+        toggle.classList.remove("invisible")
         console.log(currencyRate);
-        document.getElementById('rate').textContent = currencyRate.toFixed(3)+" "+ selectedCurrencyName;
-        let invertedRate = Math.pow(currencyRate, -1).toFixed(3);
+        document.getElementById('rate').textContent = currencyRate.toFixed(2)+" "+ selectedCurrencyName;
+        let invertedRate = Math.pow(currencyRate, -1).toFixed(2);
         document.getElementById('currentCurrency').textContent = selectedCurrencyName
         document.getElementById('currentInvertedRate').textContent = invertedRate;
+        document.getElementById('valueToConvert').focus()
 
-
-    toggle.classList.remove("hide")
+        convertTheValue(currencyRate, selectedCurrencyName)
     })
-
 
 }
 
+function convertTheValue(currencyRate, currencyName) {
+    document.getElementById('convert').addEventListener('click', getAndConvert => {
+        let valueToConvert = document.getElementById('valueToConvert').value
+        document.getElementById('currencyToConvert').value == currencyName ? 
+        document.getElementById('convertedValue').textContent = (valueToConvert / currencyRate).toFixed(2)  + ' Euro' :
+        document.getElementById('convertedValue').textContent = (valueToConvert * currencyRate).toFixed(2) + ' ' + currencyName;
+    })
+}
 
