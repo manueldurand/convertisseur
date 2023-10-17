@@ -1,21 +1,29 @@
-import countriesList  from './countries.js';
+import countriesList  from './countries.js'; // contient les infos par pays de nom et code de devise
 import { resizeDropdown } from './functions.js';
 
 import { fetchCurrencyRate } from './tauxDeChange.js';
 
 var paysSelection = document.getElementById('paysSelection');
-const toggle = document.getElementById('toggle')
+const toggle = document.getElementById('toggle') // fenêtre cachée en attendant la sélection du pays
 const currencyToConvert = document.getElementById('currencyToConvert')
 
 var selectedCountry
 let formData = new FormData();
-// async function main() {
-//     const currencyRate = await fetchCurrencyRate(currency);
-//     console.log(currencyRate); // Utilisez les taux ici
-// }
 
-// main();
 
+document.addEventListener('DOMContentLoaded', function () {
+    const infoButton = document.getElementById('infoButton');
+    const infoPopup = document.getElementById('infoPopup');
+    const closeButton = document.getElementById('closeButton');
+
+    infoButton.addEventListener('click', function () {
+        infoPopup.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', function () {
+        infoPopup.style.display = 'none';
+    });
+});
 
 
 
@@ -38,23 +46,29 @@ paysSelection.addEventListener("blur", function () {
     this.size = 1;
 });
 
-
+// déclenche la fonction à la sélection d'un pays
 paysSelection.addEventListener("change", e => findCountryAndConvert(), true)
 
+/**
+ * récupère le nom du pays sélectionné, et les infos de nom et code de devise dans le fichier countriesList
+ * 
+ * 
+ */
 function findCountryAndConvert() {
     let selectedCountry = document.getElementById('paysSelection').value;
     const selectedCountryInfo = countriesList.find(country => country.nomPays === selectedCountry)
-    console.log(selectedCountry);
-    console.log(selectedCountryInfo);
     const selectedCurrencyCode = selectedCountryInfo.codeDevise
     const selectedCurrencyName = selectedCountryInfo.nomDevise
-    toggle.classList.remove("hide")
+    toggle.classList.remove("hide") // permet l'affichage des valeurs de change
 
+    while (currencyToConvert.options.length > 1) {
+        currencyToConvert.remove(1)
+    }
     let optionDevise = document.createElement('option')
     optionDevise.value = selectedCurrencyName
     optionDevise.textContent = selectedCurrencyName
     currencyToConvert.appendChild(optionDevise)
-    
+    optionDevise.selected = true;
 
     fetchCurrencyRate(selectedCurrencyCode)
     .then(response => {
@@ -72,13 +86,21 @@ function findCountryAndConvert() {
     })
 
 }
-
 function convertTheValue(currencyRate, currencyName) {
-    document.getElementById('convert').addEventListener('click', getAndConvert => {
-        let valueToConvert = document.getElementById('valueToConvert').value
-        document.getElementById('currencyToConvert').value == currencyName ? 
-        document.getElementById('convertedValue').textContent = (valueToConvert / currencyRate).toFixed(2)  + ' Euro' :
-        document.getElementById('convertedValue').textContent = (valueToConvert * currencyRate).toFixed(2) + ' ' + currencyName;
-    })
-}
+    document.getElementById('convert').addEventListener('click', getAndConvert);
 
+    document.getElementById('valueToConvert').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            getAndConvert();
+        }
+    });
+
+    function getAndConvert() {
+        let valueToConvert = document.getElementById('valueToConvert').value;
+        if (document.getElementById('currencyToConvert').value == currencyName) {
+            document.getElementById('convertedValue').textContent = (valueToConvert / currencyRate).toFixed(2) + ' Euro';
+        } else {
+            document.getElementById('convertedValue').textContent = (valueToConvert * currencyRate).toFixed(2) + ' ' + currencyName;
+        }
+    }
+}

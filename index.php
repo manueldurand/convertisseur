@@ -29,7 +29,7 @@ $dt = date('d/m/Y');
         <div class="" id="form">
             <div class="">
 
-                <h2 class="">Convertisseur de devises</h2>
+                <h2 class="">Convertisseur de devises <span class="mini">(base Euro)</span></h2>
                 <fieldset>
 
                     <div class="centerdiv">
@@ -42,7 +42,7 @@ $dt = date('d/m/Y');
 
                         <p class="">1 <span id="currentCurrency" ></span> = <span id="currentInvertedRate"></span> Euro</p>
                     </div>
-                    <h3>convertir : </h3>
+                    <h3> convertir </h3>
                     <fieldset>
                         <div class="centerdiv">
                          <input type="text" value="" id="valueToConvert" placeholder="..." required class="">
@@ -59,10 +59,19 @@ $dt = date('d/m/Y');
                     </fieldset>
 
                     <div id="date" class="">
+                        
+                        données actualisées au 
                         <?php
                         echo $dt;
                         ?> &copy;manueldurand.fr
+                    <button id="infoButton" class="info-button">ℹ️</button>
+                    <div id="infoPopup" class="info-popup">
+                        <span class="close-button" id="closeButton">×</span>
+                        <p>Les taux de changes sont récupérés par l'interface</p>
+                        <p><a href="https://exchangeratesapi.io" target="_blank">exchangeratesapi</a>,</p>
+                        <p>mise à jour toutes les heures.</p>
                     </div>
+                </div>
                 </div>
             </div>
 
@@ -71,6 +80,7 @@ $dt = date('d/m/Y');
 
 
     </container>
+
 
     <script src="tauxDeChange.js" type="module" defer></script>
     <script type="module" src="functions.js"></script>

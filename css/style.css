@@ -59,6 +59,9 @@
     text-align: center;
 
 }
+.mini {
+  font-size:small;
+}
 #toggle {
     min-height: 30px;
     text-align: center;
@@ -81,7 +84,7 @@ input[type=text] {
 #convert {
     display: block;
     cursor: pointer;
-    width: 80%;
+    width: 50%;
     border: none;
     border-radius: 6px;
     background: #580bf3;
@@ -91,7 +94,7 @@ input[type=text] {
     font-size: 15px;
 }
 #convert:hover {
-    background: #a809f2;
+    background: #3160fa;
     -webkit-transition: background 0.3s ease-in-out;
     -moz-transition: background 0.3s ease-in-out;
     transition: background-color 0.3s ease-in-out;
@@ -110,3 +113,47 @@ input[type=text] {
     text-align: center;
     font-size: small;
   }
+
+
+.info-button {
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+
+}
+
+.info-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background-color: #dfdfdf;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #580bf3;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
