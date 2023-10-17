@@ -48,6 +48,7 @@ function findCountryAndConvert() {
     console.log(selectedCountryInfo);
     const selectedCurrencyCode = selectedCountryInfo.codeDevise
     const selectedCurrencyName = selectedCountryInfo.nomDevise
+    toggle.classList.remove("hide")
 
     let optionDevise = document.createElement('option')
     optionDevise.value = selectedCurrencyName

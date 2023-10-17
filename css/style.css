@@ -1,10 +1,56 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 12px;
+    line-height: 30px;
+    color: #777;
+    background: #580bf3;
+  }
+  .container {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+  }
+  #form {
+    display: flex;
+    flex-direction: column;
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 150px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
 
+  fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+  }
+  h2,h3 {
+    margin: 15px auto;
+    text-align: center;
+  }
 #paysSelection.open {
     height: 200px;
     overflow-y:scroll;
 } 
 .hide {
-    display: none;
+    visibility: hidden;
 }
 .titre {
     text-align: center;
@@ -13,3 +59,54 @@
     text-align: center;
 
 }
+#toggle {
+    min-height: 30px;
+    text-align: center;
+}
+.centerdiv {
+    display: flex;
+    justify-content: center;
+}
+input[type=text] {
+    width: 100px;
+    padding: 8px 12px;
+    margin-right: 1em;
+    border: #580bf3 1px solid;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  select {
+    padding: 8px
+  }
+#convert {
+    display: block;
+    cursor: pointer;
+    width: 80%;
+    border: none;
+    border-radius: 6px;
+    background: #580bf3;
+    color: #FFF;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 15px;
+}
+#convert:hover {
+    background: #a809f2;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#convert:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+#convertedValue {
+    font-weight: 700;
+    font-size: large;
+    /* color: black; */
+}
+
+#date {
+    text-align: center;
+    font-size: small;
+  }
